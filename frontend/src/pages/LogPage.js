@@ -37,7 +37,7 @@ function LogPage({ setSong }) {
             const music = await getResponse.json();
             setMusic(music);
         }   else {
-            console.error(`Failed to delete song with _id = ${_id}, status code = ${response.status}`)
+            console.error(`Failed to delete application with _id = ${_id}, status code = ${response.status}`)
         }
     }
 
@@ -49,8 +49,7 @@ function LogPage({ setSong }) {
     // DISPLAY the music
     return (
         <>
-            <h2>Favorite Songs Logger</h2>
-            <p>Here is a place to store and track your favorite music tracks. This table tracks the artist of the track, the song's title, a personal rating for the song, and the release year. You may delete or edit entries at any time!</p>
+            <h2>Job Application Tracker</h2>
             <LogTable 
                 music={music} 
                 onEditSong={onEditSong} 

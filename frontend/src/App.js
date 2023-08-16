@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// import data
-import products from './data/products.js'
-
 // import components and pages
 import Nav from './components/Nav.js';
 import HomePage from './pages/HomePage.js';
-import GalleryPage from './pages/GalleryPage.js';
-import StaffPage from './pages/StaffPage.js';
-import OrderPage from './pages/OrderPage.js';
 import LogPage from './pages/LogPage.js'
 import CreatePage from './pages/CreatePage.js'
 import EditPage from './pages/EditPage.js'
-import TopicsPage from './pages/TopicsPage.js'
 // import ContactPage from './pages/ContactPage.js';
 
 //import styles and images
@@ -43,10 +36,6 @@ function App() {
                 <Route path="/log" element={<LogPage setSong={setSongToEdit} />} />
                 <Route path="/add-music" element={<CreatePage />} />
                 <Route path="/edit-music" element={<EditPage song={song} />} />
-                <Route path="/topics" element={<TopicsPage />} />
-                <Route path="/gallery" element={<GalleryPage />} />
-                <Route path="/order" element={<OrderPage products={products} />} />
-                <Route path="/staff" element={<StaffPage />} />
             </Routes>
           </section>
         </main>

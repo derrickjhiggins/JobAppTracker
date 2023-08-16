@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const CreatePage = () => {
-    const [artist, setArtist] = useState('Artist Name');
-    const [title, setTitle] = useState('Song Title');
+    const [artist, setArtist] = useState('Company Name');
+    const [title, setTitle] = useState('Position Title');
     const [rating, setRating] = useState(0);
     const [releaseYear, setReleaseYear] = useState(0);
 
@@ -23,7 +23,7 @@ export const CreatePage = () => {
         if (response.status === 201) {
             alert("Successfully added a new song.")
         } else {
-            alert('Failed to add a new song. The response error code is: ')
+            alert('Failed to add a application entry. The response error code is: ')
             alert(response.status)
         }
         navigate("/log");
@@ -33,16 +33,16 @@ export const CreatePage = () => {
         <>
         <h2>Log a Song</h2>
         <article>
-            <p>Add a song to the log here.</p>
+            <p>Add a new application to the log here.</p>
             <table id="music">
                 <tbody>
                     <tr>
                         <td></td>
                         <td></td>
-                        <td>Artist</td>
-                        <td>Title</td>
-                        <td>Rating</td>
-                        <td>Release Year</td>
+                        <td>Company</td>
+                        <td>Position Title</td>
+                        <td>Salary</td>
+                        <td>Start Date</td>
                     </tr>
                     <tr>
                         <td></td>

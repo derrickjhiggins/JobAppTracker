@@ -4,15 +4,15 @@ import LogRow from './LogRow.js';
 function LogTable({ music, onDeleteSong, onEditSong }) {
     return (
         <table id="music">
-            <caption>Add and Edit Music</caption>
+            <caption>Add and Edit Job Applications</caption>
             <thead>
                 <tr>
                     <th>Delete</th>
                     <th>Edit</th>
-                    <th>Artist</th>
-                    <th>Title</th>
-                    <th>Rating</th>
-                    <th>Release Year</th>
+                    <th>Company</th>
+                    <th>Position Title</th>
+                    <th>Salary</th>
+                    <th>Start Date</th>
                 </tr>
             </thead>
             <tbody>

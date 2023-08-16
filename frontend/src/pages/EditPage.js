@@ -25,19 +25,18 @@ export const EditPage = ({ song }) => {
 
         if (response.status === 200) {
             navigate("/log");
-            alert("Successfully edited the song.");
+            alert("Successfully edited application.");
         } else {
             const errMessage = await response.json();
             navigate("/log");
-            alert(`Failed to update the song. Status ${response.status}. ${errMessage}.`)
+            alert(`Failed to update application. Status ${response.status}. ${errMessage}.`)
         }
     };
 
     return (
         <>
-        <h2>Edit a Song</h2>
+        <h2>Edit an application</h2>
         <article>
-            <p>Use this page to edit a song in the collection. You may edit any piece of information necessary, and save your changes..</p>
             <table id="music">
                 <tbody>
                     <tr>
@@ -67,7 +66,7 @@ export const EditPage = ({ song }) => {
                         pattern="\d(2}-\d{2}-\d{2}"
                         />
                             </label></td>
-                        <td><button className="wait" onClick={onEditSong}>Save Song</button></td>
+                        <td><button className="wait" onClick={onEditSong}>Save Application</button></td>
                     </tr>
                 </tbody>
             </table>
