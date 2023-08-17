@@ -14,7 +14,7 @@ import './App.css';
 
 function App() {
 
-    const [song, setSongToEdit] = useState([])
+    const [application, setApplicationToEdit] = useState([])
 
   return (
     <div className="App">
@@ -33,9 +33,9 @@ function App() {
             <Routes>
                 <Route path="/" exact element={<HomePage />} />
                 {/* <Route path="/contact" element={<ContactPage />} />  */}
-                <Route path="/log" element={<LogPage setSong={setSongToEdit} />} />
-                <Route path="/add-music" element={<CreatePage />} />
-                <Route path="/edit-music" element={<EditPage song={song} />} />
+                <Route path="/log" element={<LogPage setApplication={setApplicationToEdit} />} />
+                <Route path="/add-application" element={<CreatePage />} />
+                <Route path="/edit-application" element={<EditPage application={application} />} />
             </Routes>
           </section>
         </main>

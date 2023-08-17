@@ -4,38 +4,38 @@ import { Link } from 'react-router-dom';
 import LogTable from '../components/LogTable';
 import { AiFillFileAdd } from "react-icons/ai";
 
-function LogPage({ setSong }) {
+function LogPage({ setApplication }) {
     // Use the Navigate for redirection
     const redirect = useNavigate();
 
     // Use state to bring in the data
-    const [music, setMusic] = useState([]);
+    const [applications, setApplications] = useState([]);
 
     // RETRIEVE the entire list of music
-    const loadMusic = async () => {
+    const loadApplications = async () => {
         const response = await fetch('/log');
-        const music = await response.json();
-        setMusic(music);
+        const applications = await response.json();
+        setApplications(applications);
     } 
     
 
     // UPDATE a single song
-    const onEditSong = song => {
-        setSong(song);
-        redirect("/edit-music");
+    const onEditApplication = application => {
+        setApplication(application);
+        redirect("/edit-application");
     }
 
     // DELETE a single song  
-    const onDeleteSong = async _id => {
+    const onDeleteApplication = async _id => {
         const response = await fetch(`/log/${_id}`, { method: 'DELETE' });
         if (response.status === 204) {
             const getResponse = await fetch('/log');
-            const music = await getResponse.json();
-            setMusic(music);
+            const application = await getResponse.json();
+            setApplications(application);
         } else if (response.status === 200) {
             const getResponse = await fetch('/log');
-            const music = await getResponse.json();
-            setMusic(music);
+            const application = await getResponse.json();
+            setApplications(application);
         }   else {
             console.error(`Failed to delete application with _id = ${_id}, status code = ${response.status}`)
         }
@@ -43,7 +43,7 @@ function LogPage({ setSong }) {
 
     // LOAD all the music
     useEffect(() => {
-        loadMusic();
+        loadApplications();
     }, []);
 
     // DISPLAY the music
@@ -51,11 +51,11 @@ function LogPage({ setSong }) {
         <>
             <h2>Job Application Tracker</h2>
             <LogTable 
-                music={music} 
-                onEditSong={onEditSong} 
-                onDeleteSong={onDeleteSong}
+                applications={applications} 
+                onEditApplication={onEditApplication} 
+                onDeleteApplication={onDeleteApplication}
             />
-            <Link to="/add-music">
+            <Link to="/add-application">
               <AiFillFileAdd />
             </Link>
         </>

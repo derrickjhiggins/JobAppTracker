@@ -14,71 +14,71 @@ db.once("open", (err) => {
     if(err){
         res.status(500).json({ error: '500:Connection to the server failed.' });
     } else  {
-        console.log('Successfully connected to MongoDB Music collection using Mongoose.');
+        console.log('Successfully connected to MongoDB job applications collection using Mongoose.');
     }
 });
 
 // SCHEMA: Define the collection's schema.
-const songSchema = mongoose.Schema({
-    artist:   { type: String, rquired: true },
-	title:    { type: String, required: true },
-	rating:     { type: Number, required: true },
-	releaseYear:   { type: Date, required: true, default: Date.now }
+const applicationSchema = mongoose.Schema({
+    company:   { type: String, rquired: true },
+	position:    { type: String, required: true },
+	salary:     { type: Number, required: true },
+	startDate:   { type: Date, required: true, default: Date.now }
 });
 
 // Compile the model from the schema.
-const Song = mongoose.model('Song', songSchema);
+const Application = mongoose.model('Application', applicationSchema);
 
 
 // CREATE model *****************************************
-const createSong = async (artist, title, rating, releaseYear) => {
-    const song = new Song({ 
-        artist: artist,
-        title: title, 
-        rating: rating, 
-        releaseYear: releaseYear
+const createApplication = async (company, position, salary, startDate) => {
+    const application = new Application({ 
+        company: company,
+        position: position, 
+        salary: salary, 
+        startDate: startDate
     });
-    return song.save();
+    return application.save();
 }
 
 
 // RETRIEVE models *****************************************
 // Retrieve based on a filter and return a promise.
-const retrieveMusic = async () => {
-    const query = Song.find();
+const retrieveApplication = async () => {
+    const query = Application.find();
     return query.exec();
 }
 
 // RETRIEVE by ID
-const retrieveSongByID = async (_id) => {
-    const query = Song.findById({_id: _id});
+const retrieveApplicationByID = async (_id) => {
+    const query = Application.findById({_id: _id});
     return query.exec();
 }
 
 // DELETE model based on _id  *****************************************
-const deleteSongById = async (_id) => {
-    const result = await Song.deleteOne({_id: _id});
+const deleteApplicationByID = async (_id) => {
+    const result = await Application.deleteOne({_id: _id});
     return result.deletedCount;
 };
 
 
 // UPDATE model *****************************************************
-const updateSong = async (_id, artist, title, rating, releaseYear) => {
-    const result = await Song.replaceOne({_id: _id }, {
-        artist: artist,
-        title: title,
-        rating: rating,
-        releaseYear: releaseYear
+const updateApplication = async (_id, company, position, salary, startDate) => {
+    const result = await Application.replaceOne({_id: _id }, {
+        company: company,
+        position: position,
+        salary: salary,
+        startDate: startDate
     });
     return { 
         _id: _id, 
-        artist: artist,
-        title: title,
-        rating: rating,
-        releaseYear: releaseYear 
+        company: company,
+        position: position,
+        salary: salary,
+        startDate: startDate 
     }
 }
 
 
 // Export our variables for use in the controller file.
-export { createSong, retrieveMusic, retrieveSongByID, updateSong, deleteSongById }
+export { createApplication, retrieveApplication, retrieveApplicationByID, updateApplication, deleteApplicationByID }

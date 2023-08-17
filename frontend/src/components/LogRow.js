@@ -2,16 +2,16 @@ import React from 'react';
 import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 
 
-function LogRow({ song, onDeleteSong, onEditSong }) {
+function LogRow({ application, onDeleteApplication, onEditApplication }) {
     return (
         <>
         <tr>
-            <td><FaRegTrashAlt onClick={() => onDeleteSong(song._id)} title="Delete a song."/></td>
-            <td><FaEdit onClick={() => onEditSong(song)} title="Edit your song choice."/></td>
-            <td title="Who is the artist of the song?" >{song.artist}</td>
-            <td title="What is the title of the song?" >{song.title}</td>
-            <td title="What is your rating for the song?" >{song.rating}</td>
-            <td title="What is the release year of the song?" >{song.releaseYear}</td>
+            <td><FaRegTrashAlt onClick={() => onDeleteApplication(application._id)} title="Delete an application."/></td>
+            <td><FaEdit onClick={() => onEditApplication(application)} title="Edit your application."/></td>
+            <td title="Who is the artist of the song?" >{application.company}</td>
+            <td title="What is the title of the song?" >{application.position}</td>
+            <td title="What is your rating for the song?" >{application.salary}</td>
+            <td title="What is the release year of the song?" >{application.startDate}</td>
         </tr>
         </>
     )

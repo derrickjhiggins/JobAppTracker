@@ -2,28 +2,28 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const CreatePage = () => {
-    const [artist, setArtist] = useState('Company Name');
-    const [title, setTitle] = useState('Position Title');
-    const [rating, setRating] = useState(0);
-    const [releaseYear, setReleaseYear] = useState(0);
+    const [company, setCompany] = useState('Company Name');
+    const [position, setPosition] = useState('Position Title');
+    const [salary, setSalary] = useState(0);
+    const [startDate, setStartDate] = useState(0);
 
     const navigate = useNavigate();
 
-    const addSong = async () => {
-        const newSong = { artist, title, rating, releaseYear };
+    const addApplication = async () => {
+        const newApplication = { company, position, salary, startDate };
 
         const response = await fetch('/log', {
             method: 'POST',
-            body: JSON.stringify(newSong),
+            body: JSON.stringify(newApplication),
             headers: {
                 'Content-Type': 'application/json',
             },
         });
 
         if (response.status === 201) {
-            alert("Successfully added a new song.")
+            alert("Successfully added a new application.")
         } else {
-            alert('Failed to add a application entry. The response error code is: ')
+            alert('Failed to add an application entry. The response error code is: ')
             alert(response.status)
         }
         navigate("/log");
@@ -31,10 +31,10 @@ export const CreatePage = () => {
 
     return (
         <>
-        <h2>Log a Song</h2>
+        <h2>Log an Application</h2>
         <article>
             <p>Add a new application to the log here.</p>
-            <table id="music">
+            <table id="application">
                 <tbody>
                     <tr>
                         <td></td>
@@ -47,30 +47,30 @@ export const CreatePage = () => {
                     <tr>
                         <td></td>
                         <td></td>
-                        <td><label htmlFor="artist" className="required">
-                        <input type="text" value={artist} id="artist"
-                        onChange={(e) => setArtist(e.target.value)}
+                        <td><label htmlFor="company" className="required">
+                        <input type="text" value={company} id="company"
+                        onChange={(e) => setCompany(e.target.value)}
                         />
                             </label></td>
 
-                        <td><label htmlFor="songname" className="required">
-                            <input type="text" value={title} id="songname"
-                            onChange={(e) => setTitle(e.target.value)}
+                        <td><label htmlFor="position" className="required">
+                            <input type="text" value={position} id="position"
+                            onChange={(e) => setPosition(e.target.value)}
                             />
                             </label></td>
                         
-                        <td><label htmlFor="rating" className="required">
-                        <input type="number" value={rating} id="rating"
-                        onChange={(e) => setRating(e.target.value)}
+                        <td><label htmlFor="salary" className="required">
+                        <input type="number" value={salary} id="salary"
+                        onChange={(e) => setSalary(e.target.value)}
                         />
                             </label></td>
 
-                        <td><label htmlFor="releaseYear" className="required">
-                        <input type="date" value={releaseYear} id="releaseYear"
-                        onChange={(e) => setReleaseYear(e.target.value)}
+                        <td><label htmlFor="startDate" className="required">
+                        <input type="date" value={startDate} id="startDate"
+                        onChange={(e) => setStartDate(e.target.value)}
                         />
                             </label></td>
-                        <td><button className="wait" onClick={addSong}>Save Song</button></td>
+                        <td><button className="wait" onClick={addApplication}>Save Application</button></td>
                     </tr>
                 </tbody>
             </table>

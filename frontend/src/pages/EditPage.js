@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const EditPage = ({ song }) => {
-    const [artist, setArtist] = useState(song.artist);
-    const [title, setTitle] = useState(song.title);
-    const [rating, setRating] = useState(song.rating);
-    const [releaseYear, setReleaseYear] = useState(song.releaseYear.slice(0, 10));
+export const EditPage = ({ application }) => {
+    const [company, setCompany] = useState(application.company);
+    const [position, setPosition] = useState(application.position);
+    const [salary, setSalary] = useState(application.salary);
+    const [startDate, setStartDate] = useState(application.startDate.slice(0, 10));
 
     const navigate = useNavigate();
 
-    const onEditSong = async () => {
-        const response = await fetch(`/log/${song._id}`, {
+    const onEditApplication = async () => {
+        const response = await fetch(`/log/${application._id}`, {
             method: 'PUT',
             body: JSON.stringify({
-                artist: artist,
-                title: title,
-                rating: rating,
-                releaseYear: releaseYear
+                company: company,
+                position: position,
+                salary: salary,
+                startDate: startDate
             }),
             headers: {
                 'Content-Type': 'application/json',
@@ -37,36 +37,36 @@ export const EditPage = ({ song }) => {
         <>
         <h2>Edit an application</h2>
         <article>
-            <table id="music">
+            <table id="applications">
                 <tbody>
                     <tr>
                         <td></td>
                         <td></td>
-                        <td><label for="artist" class="required">
-                        <input type="text" value={artist} id="artist"
-                        onChange={e => setArtist(e.target.value)}
+                        <td><label for="company" className="required">
+                        <input type="text" value={company} id="company"
+                        onChange={e => setCompany(e.target.value)}
                         />
                             </label></td>
 
-                        <td><label for="songname" class="required">
-                            <input type="text" value={title} id="songname"
-                            onChange={e => setTitle(e.target.value)}
+                        <td><label for="position" className="required">
+                            <input type="text" value={position} id="position"
+                            onChange={e => setPosition(e.target.value)}
                             />
                             </label></td>
                         
-                        <td><label for="rating" class="required">
-                        <input type="number" value={rating} id="rating"
-                        onChange={e => setRating(e.target.value)}
+                        <td><label for="salary" className="required">
+                        <input type="number" value={salary} id="salary"
+                        onChange={e => setSalary(e.target.value)}
                         />
                             </label></td>
 
-                        <td><label for="releaseYear" class="required">
-                        <input type="date" value={releaseYear} id="releaseYear"
-                        onChange={e => setReleaseYear(e.target.value)}
+                        <td><label for="startDate" className="required">
+                        <input type="date" value={startDate} id="startDate"
+                        onChange={e => setStartDate(e.target.value)}
                         pattern="\d(2}-\d{2}-\d{2}"
                         />
                             </label></td>
-                        <td><button className="wait" onClick={onEditSong}>Save Application</button></td>
+                        <td><button className="wait" onClick={onEditApplication}>Save Application</button></td>
                     </tr>
                 </tbody>
             </table>

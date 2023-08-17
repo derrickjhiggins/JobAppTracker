@@ -1,9 +1,9 @@
 import React from 'react';
 import LogRow from './LogRow.js';
 
-function LogTable({ music, onDeleteSong, onEditSong }) {
+function LogTable({ applications, onDeleteApplication, onEditApplication }) {
     return (
-        <table id="music">
+        <table id="applications">
             <caption>Add and Edit Job Applications</caption>
             <thead>
                 <tr>
@@ -16,12 +16,12 @@ function LogTable({ music, onDeleteSong, onEditSong }) {
                 </tr>
             </thead>
             <tbody>
-                {music.map((song, i) => 
+                {applications.map((application, i) => 
                     <LogRow 
-                        song={song} 
+                        application={application} 
                         key={i}
-                        onDeleteSong={onDeleteSong}
-                        onEditSong={onEditSong} 
+                        onDeleteApplication={onDeleteApplication}
+                        onEditApplication={onEditApplication} 
                     />)}
             </tbody>
         </table>
