@@ -39,6 +39,7 @@ const createApplication = async (company, position, salary, startDate) => {
         startDate: startDate
     });
     return application.save();
+    
 }
 
 
